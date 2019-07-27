@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
@@ -18,13 +19,14 @@ import { MockPhotosService } from './services/mock-photos.service';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     ServicesModule,
     ComponentsModule,
     InfiniteScrollModule
   ],
-  //providers: [{ provide: PHOTOS_SERVICE, useClass: FlickrService}],
-  providers: [{ provide: PHOTOS_SERVICE, useClass: MockPhotosService}],
+  providers: [{ provide: PHOTOS_SERVICE, useClass: FlickrService}],
+  //providers: [{ provide: PHOTOS_SERVICE, useClass: MockPhotosService}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
