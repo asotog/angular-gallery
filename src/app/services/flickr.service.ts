@@ -25,6 +25,7 @@ export class FlickrService implements PhotosService {
         list: data.photos.photo.map(photo => ({
           id: photo.id,
           title: photo.title,
+          description: photo.description._content,
           url: IMG_URL(photo)
         })),
         page: data.photos.page,

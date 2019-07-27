@@ -18,7 +18,8 @@ export class MockPhotosService implements PhotosService {
       list: apiResponse().photos.photo.map(photo => ({
           id: photo.id,
           title: photo.title,
-          url: IMG_URL(photo)
+          url: IMG_URL(photo),
+          description: photo.description._content
         })),
       page: 1,
       total: 20000,

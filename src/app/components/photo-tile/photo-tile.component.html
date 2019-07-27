@@ -1,3 +1,6 @@
-<div class="photo-tile" data-test="photo-tile" [style.backgroundImage]="'url(' + photo.url + ')'">
+<div class="photo-tile"
+    data-test="photo-tile"
+    [style.backgroundImage]="'url(' + photo.url + ')'">
     <h3 *ngIf="photo.title" class="title" data-test="photo-title">{{photo.title}}</h3>
+    <div *ngIf="photo.description" class="description" data-test="photo-description">{{truncatedDescription()}}</div>
 </div>

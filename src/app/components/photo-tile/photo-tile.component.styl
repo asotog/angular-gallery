@@ -1,21 +1,33 @@
 :host
+    display flex
     margin 5px
+    overflow hidden
     .photo-tile
         cursor pointer
         position relative
         background-position center
         background-size cover
+
     .title
-        color #FFF
-        background rgba(72, 72, 72, .6)
-        font-size .9rem
-        font-weight normal
         position absolute
         bottom 0
         left 0
         width 100%
         margin 0
+    .title, .description
+        background rgba(72, 72, 72, .6)
+        color #FFF
+        font-size .9rem
+        font-weight normal
         padding 10px
         word-break break-all
-    img
-        width 100%
+        transition .6s transform
+    .description
+        transform translateY(-100%)
+    &:hover
+        .title
+            transform translateY(100%)
+        .description
+            transform translateY(0)
+            
+   
