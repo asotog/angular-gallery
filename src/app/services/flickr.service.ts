@@ -10,7 +10,12 @@ const FETCH_URL = (apiKey, page, pageSize) =>
   `https://api.flickr.com/services/rest?extras=description&per_page=${pageSize}&page=${page}` +
   `&method=flickr.interestingness.getList&api_key=${apiKey}&format=json&nojsoncallback=1`;
 
-const IMG_URL = ({ farm, server, id, secret }) => `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`;
+const IMG_URL = ({ farm, server, id, secret }, size) => `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}_${size}.jpg`;
+
+export const sizes = {
+  MEDIUM: 'm',
+  LARGE: 'b'
+};
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +31,7 @@ export class FlickrService implements PhotosService {
           id: photo.id,
           title: photo.title,
           description: photo.description._content,
-          url: IMG_URL(photo)
+          url: IMG_URL(photo, sizes.MEDIUM)
         })),
         page: data.photos.page,
         total: data.photos.total
