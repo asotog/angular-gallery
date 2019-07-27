@@ -1,4 +1,8 @@
-<h1>Image Gallery</h1>
-<app-photos-layout>
-    <app-photo-tile *ngFor="let photo of photos" [photo]="photo"></app-photo-tile>
-</app-photos-layout>
+<h1>Image Gallery <span data-test="total-photos" *ngIf="pagination.total !== 0">({{pagination.total}} results)</span></h1>
+<div infiniteScroll [infiniteScrollDistance]="5" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
+    <app-photos-layout>
+
+        <app-photo-tile *ngFor="let photo of photos" [photo]="photo"></app-photo-tile>
+
+    </app-photos-layout>
+</div>

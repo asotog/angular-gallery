@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,9 +20,10 @@ import { MockPhotosService } from './services/mock-photos.service';
     BrowserModule,
     AppRoutingModule,
     ServicesModule,
-    ComponentsModule
+    ComponentsModule,
+    InfiniteScrollModule
   ],
-  // providers: [{ provide: PHOTOS_SERVICE, useClass: FlickrService}],
+  //providers: [{ provide: PHOTOS_SERVICE, useClass: FlickrService}],
   providers: [{ provide: PHOTOS_SERVICE, useClass: MockPhotosService}],
   bootstrap: [AppComponent]
 })

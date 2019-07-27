@@ -22,7 +22,7 @@ export class MockPhotosService implements PhotosService {
           description: photo.description._content
         })),
       page: 1,
-      total: 20000,
+      total: apiResponse().photos.total,
     });
   }
 }
