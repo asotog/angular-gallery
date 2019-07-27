@@ -1,4 +1,3 @@
-<div>
-    <h3 data-test="photo-title">{{photo.title}}</h3>
-    <img data-test="photo-img" [src]="photo.url">
+<div class="photo-tile" data-test="photo-tile" [style.backgroundImage]="'url(' + photo.url + ')'">
+    <h3 *ngIf="photo.title" class="title" data-test="photo-title">{{photo.title}}</h3>
 </div>

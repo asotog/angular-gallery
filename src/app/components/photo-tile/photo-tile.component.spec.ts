@@ -27,9 +27,9 @@ describe('PhotoTileComponent', () => {
 
   it('should render properly title and image', () => {
     const photoTileElement: HTMLElement = fixture.nativeElement;
+    const photoTileWrapper = photoTileElement.querySelector('[data-test="photo-tile"]');
     const title = photoTileElement.querySelector('[data-test="photo-title"]');
-    const image = photoTileElement.querySelector('[data-test="photo-img"]');
     expect(title.textContent).toEqual(photoMock.title);
-    expect(image.getAttribute('src')).toEqual(photoMock.url);
+    expect(photoTileWrapper.getAttribute('style')).toEqual(`background-image: url("${photoMock.url}");`);
   });
 });

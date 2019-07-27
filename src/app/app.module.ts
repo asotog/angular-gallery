@@ -5,7 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServicesModule } from './services/services.module';
 import { ComponentsModule } from './components/components.module';
+import { FlickrService } from './services/flickr.service';
+import { PHOTOS_SERVICE } from './services/photos.service';
 import { GalleryViewComponent } from './views/gallery-view/gallery-view.component';
+import { MockPhotosServices } from './services/mock-photos.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,8 @@ import { GalleryViewComponent } from './views/gallery-view/gallery-view.componen
     ServicesModule,
     ComponentsModule
   ],
-  providers: [],
+  // providers: [{ provide: PHOTOS_SERVICE, useClass: FlickrService}],
+  providers: [{ provide: PHOTOS_SERVICE, useClass: MockPhotosServices}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

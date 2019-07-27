@@ -7,11 +7,10 @@ import { Photos } from './photo';
 import { FlickrSettings } from './flicker-settings';
 
 const FETCH_URL = (apiKey, page, pageSize) =>
-  `https://api.flickr.com/services/rest
-      ?extras=description&per_page=${pageSize}&page=${page}&method=flickr.interestingness.getList
-      &api_key=${apiKey}&format=json&nojsoncallback=1`;
+  `https://api.flickr.com/services/rest?extras=description&per_page=${pageSize}&page=${page}` +
+  `&method=flickr.interestingness.getList&api_key=${apiKey}&format=json&nojsoncallback=1`;
 
-const IMG_URL = ({ farmId, serverId, id, secret }) => `https://farm${farmId}.staticflickr.com/${serverId}/${id}_${secret}.jpg`;
+const IMG_URL = ({ farm, server, id, secret }) => `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`;
 
 @Injectable({
   providedIn: 'root'

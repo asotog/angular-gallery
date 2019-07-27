@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Photo } from 'src/app/services/photo';
+import { PHOTOS_SERVICE, PhotosService } from 'src/app/services/photos.service';
 
 @Component({
   selector: 'app-gallery-view',
@@ -10,9 +11,12 @@ export class GalleryViewComponent implements OnInit {
 
   private photos: Photo[] = [];
 
-  constructor() { }
+  constructor(@Inject(PHOTOS_SERVICE) private photosService: PhotosService) { }
 
   ngOnInit() {
+    this.photosService.fetch(1, 20).subscribe(photos => {
+      this.photos = photos.list;
+    });
   }
 
 }

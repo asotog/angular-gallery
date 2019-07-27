@@ -1,10 +1,6 @@
 import { FlickrService } from './flickr.service';
-import { defer } from 'rxjs';
 import { apiResponse } from '../../assets/tests/services/scenarios-flickr';
-
-export function asyncData<T>(data: T) {
-  return defer(() => Promise.resolve(data));
-}
+import { asyncData } from '../../assets/tests/helpers';
 
 describe('FlickrService', () => {
   let http: { get: jasmine.Spy };
@@ -29,8 +25,7 @@ describe('FlickrService', () => {
       expect(photos.list.length).toBe(20);
       done();
     });
-    expect(http.get).toHaveBeenCalledWith(`https://api.flickr.com/services/rest
-      ?extras=description&per_page=20&page=1&method=flickr.interestingness.getList
-      &api_key=123&format=json&nojsoncallback=1`);
+    expect(http.get).toHaveBeenCalledWith(`https://api.flickr.com/services/rest?extras=description&per_page=20&page=1` +
+    `&method=flickr.interestingness.getList&api_key=123&format=json&nojsoncallback=1`);
   });
 });
