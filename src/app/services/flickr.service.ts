@@ -11,6 +11,7 @@ const FETCH_URL = (apiKey, page, pageSize) =>
       ?extras=description&per_page=${pageSize}&page=${page}&method=flickr.interestingness.getList
       &api_key=${apiKey}&format=json&nojsoncallback=1`;
 
+const IMG_URL = ({ farmId, serverId, id, secret }) => `https://farm${farmId}.staticflickr.com/${serverId}/${id}_${secret}.jpg`;
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,11 @@ export class FlickrService implements PhotosService {
   fetch(page: number, pageSize: number): Observable<Photos> {
     return this.http.get(FETCH_URL(this.flickerSettings.flickrApiKey, page, pageSize))
       .pipe(map((data: any) => ({
-        list: data.photos.photo,
+        list: data.photos.photo.map(photo => ({
+          id: photo.id,
+          title: photo.title,
+          url: IMG_URL(photo)
+        })),
         page: data.photos.page,
         total: data.photos.total
       })));
