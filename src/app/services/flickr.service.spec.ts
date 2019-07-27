@@ -1,9 +1,4 @@
-import { TestBed, inject } from '@angular/core/testing';
-import { HttpClientModule, HttpXhrBackend } from '@angular/common/http';
 import { FlickrService } from './flickr.service';
-import { FlickrSettings } from './flicker-settings';
-import { ServicesModule } from './services.module';
-import { Photos } from './photo';
 import { defer } from 'rxjs';
 import { apiResponse } from '../../assets/tests/services/scenarios-flickr';
 
