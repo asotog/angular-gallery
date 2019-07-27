@@ -8,7 +8,7 @@ import { ComponentsModule } from './components/components.module';
 import { FlickrService } from './services/flickr.service';
 import { PHOTOS_SERVICE } from './services/photos.service';
 import { GalleryViewComponent } from './views/gallery-view/gallery-view.component';
-import { MockPhotosServices } from './services/mock-photos.service';
+import { MockPhotosService } from './services/mock-photos.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { MockPhotosServices } from './services/mock-photos.service';
     ComponentsModule
   ],
   // providers: [{ provide: PHOTOS_SERVICE, useClass: FlickrService}],
-  providers: [{ provide: PHOTOS_SERVICE, useClass: MockPhotosServices}],
+  providers: [{ provide: PHOTOS_SERVICE, useClass: MockPhotosService}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

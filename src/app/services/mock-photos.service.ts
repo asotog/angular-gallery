@@ -9,7 +9,7 @@ const IMG_URL = ({ farm, server, id, secret }) => `https://farm${farm}.staticfli
 @Injectable({
   providedIn: 'root'
 })
-export class MockPhotosServices implements PhotosService {
+export class MockPhotosService implements PhotosService {
 
   constructor() { }
 

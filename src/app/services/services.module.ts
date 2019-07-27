@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FlickrService } from './flickr.service';
 import { FlickrSettings } from './flicker-settings';
-import { MockPhotosServices } from './mock-photos.service';
+import { MockPhotosService } from './mock-photos.service';
 
 
 @NgModule({
   declarations: [],
-  providers: [FlickrService, FlickrSettings, MockPhotosServices],
+  providers: [FlickrService, FlickrSettings, MockPhotosService],
   imports: [
     CommonModule,
     HttpClientModule
