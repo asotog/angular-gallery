@@ -38,8 +38,8 @@ import { EffectsModule } from '@ngrx/effects';
     }),
     EffectsModule.forRoot([GalleryViewEffects])
   ],
-  providers: [{ provide: PHOTOS_SERVICE, useClass: FlickrService}],
-  // providers: [{ provide: PHOTOS_SERVICE, useClass: MockPhotosService}],
+ // providers: [{ provide: PHOTOS_SERVICE, useClass: FlickrService}],
+  providers: [{ provide: PHOTOS_SERVICE, useClass: MockPhotosService}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

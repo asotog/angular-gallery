@@ -22,7 +22,7 @@ Exposes 2 components:
 
 ### Containers:
 2 components:
-- Gallery view: will be responsible of orchestration, knows when to call the services, and will render the UI layer components
+- Gallery view: will be responsible of orchestration, knows when to call the actions, and will render the UI layer components, contains the infinite scroll responsible of loading more photos on scroll
 - App component: will render the gallery view
 
 ### Unit test
@@ -49,6 +49,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 # Could be improved
+- Use infinite scroll together with virtual scrolling (render items only in the visible scroll area) to avoid have all the loaded items in the DOM
 - Unit tests for ngrx store implementation, effects, actions, state...
 - Open large image and metadata using a route in modal
 - Display a nice loader indicator, code already control when the gallery is loading or not more results
