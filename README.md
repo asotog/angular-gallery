@@ -53,5 +53,5 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 - Unit tests for ngrx store implementation, effects, actions, state...
 - Open large image and metadata using a route in modal
 - Display a nice loader indicator, code already control when the gallery is loading or not more results
-- Could have extended the photos-layout component in order to provided multiple types of layouts
+- Could have extended the photos-layout component in order to provide multiple types of layouts
 - Handle http errors, in real scenario if http communication fail, have to display user friendly messages to users
