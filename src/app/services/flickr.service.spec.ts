@@ -19,13 +19,13 @@ describe('FlickrService', () => {
   it('should return an Observable<Photos> and call the flickr api with proper URL', (done) => {
     const result = apiResponse();
     http.get.and.returnValue(asyncData(result));
-    flickrService.fetch(1, 20).subscribe(photos => {
+    flickrService.fetch(1, 40).subscribe(photos => {
       expect(photos.page).toBe(1);
       expect(photos.total).toBe(10000);
-      expect(photos.list.length).toBe(20);
+      expect(photos.list.length).toBe(40);
       done();
     });
-    expect(http.get).toHaveBeenCalledWith(`https://api.flickr.com/services/rest?extras=description&per_page=20&page=1` +
+    expect(http.get).toHaveBeenCalledWith(`https://api.flickr.com/services/rest?extras=description&per_page=40&page=1` +
     `&method=flickr.interestingness.getList&api_key=123&format=json&nojsoncallback=1`);
   });
 });
