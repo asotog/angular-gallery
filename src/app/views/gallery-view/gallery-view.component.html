@@ -1,9 +1,11 @@
 <h1>Image Gallery <span data-test="total-photos" *ngIf="total !== 0">({{total}} results)</span></h1>
 
-<div infiniteScroll [infiniteScrollDistance]="5" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
-    <app-photos-layout>
+<virtual-scroller #scroll [items]="photos$ | async" [parentScroll]="scroll.window">
+    <div infiniteScroll [infiniteScrollDistance]="5" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
+        <app-photos-layout #container>
 
-        <app-photo-tile *ngFor="let photo of photos$ | async" [photo]="photo" [@fade]="'in'"></app-photo-tile>
+            <app-photo-tile *ngFor="let photo of scroll.viewPortItems" [photo]="photo" [@fade]="'in'"></app-photo-tile>
 
-    </app-photos-layout>
-</div>
+        </app-photos-layout>
+    </div>
+</virtual-scroller>

@@ -7,6 +7,19 @@ import { Photos } from 'src/app/services/photo';
 import { of } from 'rxjs';
 import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
 import { Store } from '@ngrx/store';
+import { Component, Input } from '@angular/core';
+
+
+@Component({
+  selector: 'virtual-scroller',
+  template: '<div></div>'
+})
+class MockVirtualScroller {
+  @Input()
+  public items: any;
+  @Input()
+  public parentScroll: any;
+}
 
 describe('GalleryViewComponent', () => {
   let component: GalleryViewComponent;
@@ -48,7 +61,7 @@ describe('GalleryViewComponent', () => {
     photosService = jasmine.createSpyObj('PhotosService', ['fetch']);
     photosService.fetch.and.returnValue(of(result));
     TestBed.configureTestingModule({
-      declarations: [ GalleryViewComponent, PhotosLayoutComponent, PhotoTileComponent, InfiniteScrollDirective ],
+      declarations: [ GalleryViewComponent, PhotosLayoutComponent, PhotoTileComponent, InfiniteScrollDirective, MockVirtualScroller ],
       providers: [{ provide: Store, useValue: storeMock}]
     })
     .compileComponents();

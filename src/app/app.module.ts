@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { VirtualScrollerModule } from 'ngx-virtual-scroller';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
@@ -31,6 +32,7 @@ import { EffectsModule } from '@ngrx/effects';
     ServicesModule,
     ComponentsModule,
     InfiniteScrollModule,
+    VirtualScrollerModule,
     StoreModule.forRoot({ galleryView: galleryViewReducer }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
