@@ -3,7 +3,7 @@
 
 # Implementation
 ### Service layer:
-Provides access/fetch the photos REST api (also provides pagination, configuratble url), with a Flicker Service implementing a Photo Service interface, if photos source is changed to for example google photos or imgur, we can have a specific implementation without having to change the entire application code.
+Access/fetch the photos REST api (also provides pagination, configurable api), a Flicker Service implementing a Photo Service interface, if photos source is changed to for example google photos or imgur, we can have a specific implementation without having to change the entire application code.
 
 Created 2 services implementations for ease of development, one to get pictures directly from flickr and other one with hardcoded lists of pictures, this can be switched from `app.module.ts`
 ```
@@ -20,7 +20,7 @@ Exposes 2 components:
 ### Containers:
 2 components:
 - Gallery view: will be responsible of orchestration, knows when to call the services, and will render the UI layer components
-- App components: will render the gallery view
+- App component: will render the gallery view
 
 ### Unit test
 - Tested all the described functionality above running `npm run test`
