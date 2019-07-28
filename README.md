@@ -54,3 +54,4 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 - Display a nice loader indicator, code already control when the gallery is loading or not more results
 - Could have extended the photos-layout component in order to provide multiple types of layouts
 - Handle http errors, in real scenario if http communication fail, have to display user friendly messages to users
+- Use CI/CD (travis, jenkins, etc) to lock master branch and only develop under additionals branches (features, bugfixes), so CI/CD merges into master only if branches code properly pass the unit tests i wrote
