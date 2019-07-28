@@ -1,9 +1,13 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { trigger, state, transition, style, animate } from '@angular/animations';
+import { Store, select } from '@ngrx/store';
 import { Photo } from 'src/app/services/photo';
 import { PHOTOS_SERVICE, PhotosService } from 'src/app/services/photos.service';
+import { GalleryState } from 'src/app/store/gallery-view.reducer';
+import { loadPhotos } from 'src/app/store/gallery-view.actions';
+import { Observable } from 'rxjs';
 
-
+const PAGE_SIZE = 40;
 
 @Component({
   selector: 'app-gallery-view',
@@ -21,15 +25,17 @@ import { PHOTOS_SERVICE, PhotosService } from 'src/app/services/photos.service';
 })
 export class GalleryViewComponent implements OnInit {
 
-  private photos: Photo[] = [];
-  private isLoading = false;
-  private pagination = {
-    page: 0,
-    pageSize: 40,
-    total: 0
-  };
+  photos$: Observable<Photo[]>;
+  isLoading = false;
+  page = 0;
+  total = 0;
 
-  constructor(@Inject(PHOTOS_SERVICE) private photosService: PhotosService) { }
+  constructor(private store: Store<{ galleryView: GalleryState }>) {
+    this.photos$ = store.select('galleryView', 'photos');
+    store.select('galleryView', 'pagination', 'total').subscribe(total => this.total = total);
+    store.select('galleryView', 'pagination', 'page').subscribe(page => this.page = page);
+    store.select('gallery', 'isLoading').subscribe(isLoading => this.isLoading = isLoading);
+  }
 
   ngOnInit() {
     this.loadPhotos();
@@ -39,24 +45,17 @@ export class GalleryViewComponent implements OnInit {
     this.loadPhotos();
   }
 
-
   loadPhotos() {
-    const { page, pageSize } = this.pagination;
     if (this.shouldLoadMore()) {
-      this.pagination.page += 1;
-      this.isLoading = true;
-      this.photosService.fetch(page, pageSize).subscribe(photos => {
-        this.photos = [...this.photos, ...photos.list];
-        this.pagination.total = photos.total;
-        this.isLoading = false;
-      });
+      const { page } = this;
+      this.store.dispatch(loadPhotos({ page: page + 1, pageSize: PAGE_SIZE }));
     }
   }
 
   shouldLoadMore() {
-    const { page, total, pageSize } = this.pagination;
+    const { page, total } = this;
     const noResults = page !== 0 && total === 0;
-    const hasNextPage = (page === 0 && total === 0) || (page + 1) <= Math.round(total / pageSize);
+    const hasNextPage = (page === 0 && total === 0) || (page + 1) <= Math.round(total / PAGE_SIZE);
     return !this.isLoading && !noResults && hasNextPage;
   }
 

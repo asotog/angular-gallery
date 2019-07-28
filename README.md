@@ -12,6 +12,9 @@ providers: [{ provide: PHOTOS_SERVICE, useClass: FlickrService}],
 ```
 Environment configurations contains the flickr keys, where can be changed easily.
 
+### Store
+Uses ngrx to handle the store and actions. With redux tools can be seen how the data is flowing to the view and when the load action is triggered
+
 ### UI layer:
 Exposes 2 components:
 - photo tile: displays the single image with the tile and description
@@ -46,7 +49,8 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 # Could be improved
-- Implement state management such as ngrx/store, this way the gallery view component is only responsible of triggering actions and not do any logic or calculation
+- Unit tests for ngrx store implementation, effects, actions, state...
 - Open large image and metadata using a route in modal
+- Display a nice loader indicator, code already control when the gallery is loading or not more results
 - Could have extended the photos-layout component in order to provided multiple types of layouts
 - Handle http errors, in real scenario if http communication fail, have to display user friendly messages to users
