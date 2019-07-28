@@ -16,12 +16,12 @@ describe('FlickrService', () => {
     expect(flickrService).toBeTruthy();
   });
 
-  it('should return an Observable<Photos>', (done) => {
+  it('should return an Observable<Photos> and call the flickr api with proper URL', (done) => {
     const result = apiResponse();
     http.get.and.returnValue(asyncData(result));
     flickrService.fetch(1, 20).subscribe(photos => {
       expect(photos.page).toBe(1);
-      expect(photos.total).toBe(500);
+      expect(photos.total).toBe(10000);
       expect(photos.list.length).toBe(20);
       done();
     });

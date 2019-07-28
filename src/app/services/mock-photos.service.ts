@@ -4,7 +4,7 @@ import { PhotosService } from './photos.service';
 import { Photos } from './photo';
 import { apiResponse } from 'src/assets/tests/services/scenarios-flickr';
 
-const IMG_URL = ({ farm, server, id, secret }) => `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`;
+const IMG_URL = ({ farm, server, id, secret }) => `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}_m.jpg`;
 
 @Injectable({
   providedIn: 'root'

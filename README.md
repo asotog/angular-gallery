@@ -5,6 +5,13 @@
 ### Service layer:
 Provides access/fetch the photos REST api (also provides pagination, configuratble url), with a Flicker Service implementing a Photo Service interface, if photos source is changed to for example google photos or imgur, we can have a specific implementation without having to change the entire application code.
 
+Created 2 services implementations for ease of development, one to get pictures directly from flickr and other one with hardcoded lists of pictures, this can be switched from `app.module.ts`
+```
+providers: [{ provide: PHOTOS_SERVICE, useClass: FlickrService}],
+//providers: [{ provide: PHOTOS_SERVICE, useClass: MockPhotosService}],
+```
+Environment configurations contains the flickr keys, where can be changed easily.
+
 ### UI layer:
 Exposes 2 components:
 - photo tile: displays the single image with the tile and description
@@ -15,6 +22,8 @@ Exposes 2 components:
 - Gallery view: will be responsible of orchestration, knows when to call the services, and will render the UI layer components
 - App components: will render the gallery view
 
+### Unit test
+- Tested all the described functionality above running `npm run test`
 
 # Runtime
 
@@ -37,3 +46,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 # Could be improved
+- Implement state management such as ngrx/store, this way the gallery view component is only responsible of triggering actions and not do any logic or calculation
+- Open large image and metadata using a route in modal
+- Could have extended the photos-layout component in order to provided multiple types of layouts
+- Handle http errors, in real scenario if http communication fail, have to display user friendly messages to users

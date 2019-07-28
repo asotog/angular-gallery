@@ -25,7 +25,7 @@ export class GalleryViewComponent implements OnInit {
   private isLoading = false;
   private pagination = {
     page: 0,
-    pageSize: 30,
+    pageSize: 40,
     total: 0
   };
 
